@@ -135,7 +135,7 @@ export default function App() {
         />
         <Button
           title="전송"          
-          onPress={ () => {
+          onPress={ () => { 
               insertTodo()
           }}/>
      </InputContainer>
