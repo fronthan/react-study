@@ -49,6 +49,9 @@ const BackLabel = styled.Text`
     color:#00c;
 `;
 
+const Temp = styled.Button`
+`;
+
 function MovieDetail(props) {
     const [ info, setInfo ] = React.useState(null);
     React.useEffect( () => {
@@ -74,7 +77,7 @@ function MovieDetail(props) {
             </Header>
             <Contents>
                 { info === null ? (
-                    <ActivityIndicator size={ 'large' }/>
+                    <ActivityIndicator color="#00f" size="large"/>
                 ) : (
                     <>
                     <Title>{ info.movieNm }</Title>
@@ -87,6 +90,9 @@ function MovieDetail(props) {
                     <Description>관람제한: {info.audits.map(item=>item.watchGradeNm).join(',')}</Description>                    
                     </>
                 ) }
+                <Temp title='재이동' onPress={ ()=> {
+                    props.navigation.navigate( 'BoxOffice' );
+                }}/>
             </Contents>
         </Container>
     );
