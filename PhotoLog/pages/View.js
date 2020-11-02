@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import storage from '../net/storage';
+import { withContext } from "context-q";
+import moment from 'moment';
 
-const Title = styled.Text`
-  font-size: 30px;
-`;
 const Image = styled.Image`
     width:100%; height:360px;
 `;
 const Tags = styled.Text`
     font-size:16px;
+`;
+
+const Date = styled.Text`
+  color:#ddd;
+  font-size:14px;
+  text-align:center;
 `;
 
 function Component(props) {
@@ -23,6 +28,9 @@ function Component(props) {
       { item && (
           <>
             <Image source={{uri:item.url}} />
+            {props.context.showDate && (
+              <Date>{moment(item.id, 'x').format( 'YYYY-MM-DD' )}</Date>
+            )}
             <Tags>{item.hashtags}</Tags>
           </>
       )}
@@ -30,4 +38,5 @@ function Component(props) {
   );
 }
 
+Component = withContext(Component);
 export default Component;

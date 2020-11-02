@@ -34,6 +34,7 @@ async function append(values) {
   return await store(KEY, JSON.stringify(data));
 }
 
+
 // export const read = read;
 // export const store = store;
 // export const readAll = readAll;
@@ -45,5 +46,5 @@ export default {
   store,
   readAll,
   readById,
-  append,
+  append
 };
