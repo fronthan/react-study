@@ -1,5 +1,4 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import styled from 'styled-components/native';
 import storage from '../net/storage';
 import { withContext } from 'context-q';
@@ -15,7 +14,19 @@ const Contents = styled.ScrollView`
   flex:1;
   padding:15px;
 `;
-const Button = styled.Button``;
+
+const Button = styled.TouchableOpacity`
+    align-items:center; justify-content:center;
+    width:100%;
+    height:50px;
+    border-width:1px;
+    border-color:#dd9b25;
+    background-color:#dd9b25;
+`;
+const ButtonTxt = styled.Text`
+  color:#fff; font-size:24px;
+`;
+
 const ListItem = styled.TouchableOpacity`
     flex-direction:row;
     align-items:center;
@@ -27,11 +38,13 @@ const Thumbnail = styled.Image`
     width:80px; height:80px;
     margin-right:10px;
 `;
+const Row = styled.View``;
 const Tags = styled.Text`
-    font-size:14px;
+    font-size:16px;
 `;
 const Date = styled.Text`
     color: #aaaaaa;
+    font-size:14px;
     margin-right: 12px;
 `;
 
@@ -40,11 +53,11 @@ function Component(props) {
   React.useEffect(() => {
     const unsubscribe = props.navigation.addListener('focus', e => {
       //e.preventDefault();
-      storage.readAll().then((data) => setList(data));
+      storage.readAll().then(data => setList(data));
     });
 
-    storage.readAll().then((data) => setList(data));
-    return () => unsubscribe();
+    storage.readAll().then(data => setList(data));
+    return () => unsubscribe(); //useEffect 가 끝나는 시점에
   }, []);
 
   return (
@@ -55,37 +68,37 @@ function Component(props) {
         <ListItem key={item.id} onPress={() => {
             props.navigation.navigate('View', { id: item.id});
         }}>
+          <Thumbnail source={{ uri: item.url }}/>
           <Row>
-            <Thumbnail source={{ uri: item.url }}/>
-            <Tags>
-                {item.hashtags}               
-            </Tags>
+            <Tags>{item.hashtags}</Tags>
+            {props.context.showDate && (
+              <Date>{moment(item.id, 'x').format('YYYY-MM-DD')}</Date>
+            )
+            //'x'는 밀리초로 파싱하는 것
+          }
           </Row>
-          {props.context.showDate && (
-            <Date>{moment(item.id, 'x').format('YYYY-MM-DD')}</Date>
-          )}
         </ListItem>
       ))}     
       </Contents>
     
-      <Button
-        title="사진추가"
-        onPress={() => {
+      <Button onPress={() => {
           props.navigation.navigate('Form');
         }}
-      />
-      <Button
-        title="설정"
-        onPress={() => {
+      >
+        <ButtonTxt>사진추가</ButtonTxt>
+      </Button>
+      <Button onPress={() => {
           props.navigation.navigate('Settings');
         }}
-      />
+      >
+        <ButtonTxt>설정</ButtonTxt>
+      </Button>
       </Container>
     </>
   );
 }
 
-Component = widthContext( Component );
+Component = withContext( Component );
 
 export default Component;
 

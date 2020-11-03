@@ -21,6 +21,6 @@ function Component(props) {
     );
 }
 
-Component = widthContext( Component );
+Component = withContext( Component );
 
 export default Component;

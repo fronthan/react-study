@@ -13,7 +13,7 @@ import { Provider } from 'context-q';
 
 const App: () => React$Node = () => {
   return (
-    <Provider DefaultState={{ showDate:false}}>
+    <Provider DefaultState={{ showDate: true}}>
       <NavigationContainer>
         <AppNavigator />
       </NavigationContainer>
