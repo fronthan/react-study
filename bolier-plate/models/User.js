@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
     },
     email: {
         type:String,
-        trim:true, //공백을 없애줌
+        trim:true, 
         unique:1
     },
     password: {
@@ -33,3 +33,4 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 module.exports = {User};
+//trim:공백을 없애줌
