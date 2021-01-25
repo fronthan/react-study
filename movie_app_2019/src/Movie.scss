@@ -8,6 +8,7 @@
 
   .loader_txt {
     font-size: 2rem;
+    font-weight:700;
   }
 }
 
@@ -23,7 +24,7 @@
   width: calc(50% - 30px);
   margin: 3rem 15px;
   padding: 30px 30px 30px 180px;
-  box-shadow: 0 0 10px #f1f1f1;
+  box-shadow: 0 13px 27px -5px rgba(50,50,93,.25);
   background: #fff;
   transition: 0.5s all;
 
@@ -32,11 +33,13 @@
     position: absolute;
     left: 20px;
     top: -20px;
+    box-shadow: 0 13px 27px -5px rgba(50,50,93,.1);
   }
 
   .movie_title {
     padding-bottom: 1.4rem;
     font-size: 1.8rem;
+    font-weight:700;
     letter-spacing: -1px;
     color: #35395d;
   }
