@@ -1,0 +1,81 @@
+.loader {
+  //로딩 중일 때
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+
+  .loader_txt {
+    font-size: 2rem;
+  }
+}
+
+.movies_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 60px 0;
+  transition: 0.5s all;
+}
+
+.movie {
+  position: relative;
+  width: calc(50% - 30px);
+  margin: 3rem 15px;
+  padding: 30px 30px 30px 180px;
+  box-shadow: 0 0 10px #f1f1f1;
+  background: #fff;
+  transition: 0.5s all;
+
+  img {
+    width: 135px;
+    position: absolute;
+    left: 20px;
+    top: -20px;
+  }
+
+  .movie_title {
+    padding-bottom: 1.4rem;
+    font-size: 1.8rem;
+    letter-spacing: -1px;
+    color: #35395d;
+  }
+
+  .movie_year {
+    padding-bottom: 1.6rem;
+    font-size: 1.2rem;
+    color: #c3c7dd;
+  }
+
+  .movie_summary {
+    padding-bottom: 1.6rem;
+    font-size: 1.6rem;
+    color: #4d4d4d;
+    line-height: 1.2;
+    overflow: hidden;
+    word-wrap: break-word;
+  }
+
+  .genres {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .genres_genre {
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+    font-size: 1.4rem;
+    color: #c3c7dd;
+  }
+}
+
+@media (max-width: 1024px) {//간단 반응형
+  .movies_wrap {
+    justify-content: center;
+    transition: 0.5s all;
+  }
+  .movie {
+    width: calc(100% - 30px);
+    max-width: 600px;
+    transition: 0.5s all;
+  }
+}
