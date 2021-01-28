@@ -58,4 +58,5 @@ html {font-family:'Nanum Gothic', sans-serif; }
 
 body {background-color: #eef2f7;}
 
-.container {max-width:1024px; margin: 0 auto;}
+.container {max-width:1024px; margin: 0 auto; padding: 60px 0;}
+

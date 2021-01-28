@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 100;
+}
+.head_area {
+  display: flex;
+  max-width: 1024px;
+  margin: 0 auto;
+
+  .head_link {
+    width: 50%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 2rem;
+    text-align: center;
+    color: #f2f2f2;
+    &:hover {
+      background: #fff;
+      color: #000;
+    }
+  }
+}

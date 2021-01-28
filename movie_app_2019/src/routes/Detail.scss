@@ -1,0 +1,51 @@
+@charset "utf-8";
+
+.movie_title {
+    margin-top:2rem;
+    font-size:3rem;
+    font-weight:800;
+    text-align:center;
+}
+
+.movie_year {
+    padding-top: 1.5rem;
+    font-size:1.4rem;
+    text-align:center;
+    color:#0d0d0d;
+}
+
+.desc_wrap {
+    padding-top: 3rem;
+    overflow:hidden;
+
+    .movie_poster {float:left; max-height:500px; margin-right:3rem}
+
+    .desc_area {
+        padding-top:3rem;
+
+        .desc_label {padding-bottom: 2rem;
+            font-size:1.4rem
+        }
+    }
+
+    .genres_area .desc_label {padding-bottom: 0;}
+    .summary {
+        font-size:2rem;line-height:1.5;
+    }
+
+    .genres_area {display: flex; align-items: center; padding-top: 3rem;}
+    
+
+    .genre_item {
+        padding-left:1rem;
+        font-size:1.5rem;
+    }
+
+    .synopsis {
+        font-size:1.8rem;
+        line-height: 1.5;
+    }
+
+
+
+}
