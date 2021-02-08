@@ -1,12 +1,11 @@
 const express = require('express');
 const app = express();
-const port = 5000; //back server
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const config = require('./server/config/key');
-const {auth} = require('./server/middleware/auth');
+const config = require('./config/key');
+const {auth} = require('./middleware/auth');
 
-const { User } = require('./server/models/User');
+const { User } = require('./models/User');
 
 
 app.use(bodyParser.urlencoded({extended: true}));//application/x-www-form-urlencoded 로 된 데이터를 분석해서 가져올 수 있게 한다.
@@ -21,6 +20,12 @@ mongoose.connect(config.mongoURI, {
 
 app.get('/', (req, res) => res.send("hello world! 새해에도 "));
 
+app.get('/api/hello', (req, res) => {
+    res.send("hello 메시지 전달")
+});
+
+
+
 app.post('/api/users/register', (req,res) => {
     const user = new User(req.body);
 
@@ -33,7 +38,7 @@ app.post('/api/users/register', (req,res) => {
     //save() - mongoDB에서 오는 메소드
 });
 
-app.post('/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
     //요청된 데이터를 디비에 있는지 찾는다.
     User.findOne({ email: req.body.email }, (err, user)=> {
         if(!user) {
@@ -90,5 +95,5 @@ app.get('/api/users/logout', auth, (req, res) => {
     })
 })
 
-
+const port = 5000; //back server
 app.listen(port, () => console.log(`example app listening on port ${port}!`))
