@@ -3,6 +3,8 @@ import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../../_actions/user_action";
 
+import NavBar from '../NavBar/NavBar';
+
 function LoginPage(props) {
   const dispatch = useDispatch("");
 
@@ -34,6 +36,8 @@ function LoginPage(props) {
   };
 
   return (
+    <>
+    <NavBar/>
     <div
       style={{
         display: "flex",
@@ -57,6 +61,7 @@ function LoginPage(props) {
         <button>로그인</button>
       </form>
     </div>
+    </>
   );
 }
 

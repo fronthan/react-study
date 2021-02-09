@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { loginUser, registerUser } from "../../../_actions/user_action";
 import {withRouter } from 'react-router-dom';
 
+import NavBar from '../NavBar/NavBar';
+
 function RegisterPage(props) {
     const dispatch = useDispatch("");
 
@@ -51,6 +53,8 @@ function RegisterPage(props) {
 
 
   return (
+    <>
+    <NavBar />
     <div
       style={{
         display: "flex",
@@ -78,6 +82,7 @@ function RegisterPage(props) {
         <button>회원가입</button>
       </form>
     </div>
+    </>
   );
 }
 
