@@ -43,13 +43,16 @@ const App = () => {
   )
 }*/
 
-//==== 8.3 useReducer
+/*/==== 8.3 useReducer
 import React from 'react';
 import CounterFuncB from './CounterFunc';
 import InfoB from './InfoB';
+*/
 
+import React from 'react';
+import Average from "./Average";
 const App = () => {
-  return <InfoB />
+  return <Average />
 }
 
 export default App;
