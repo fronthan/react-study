@@ -8,6 +8,7 @@
 // import IterationSample from './IterationSample';
 //import CounterFunc from './CounterFunc';
 // import Info from './Info';
+//import Average from "./Average";
 
 /* ==== 5.3 DOM 에 ref 이름 달기, 컴포넌트 전체를 상위 컴포넌트에서 제어하기
 //데이터 전달을 위해 사용하면 안 됨 주의
@@ -50,9 +51,9 @@ import InfoB from './InfoB';
 */
 
 import React from 'react';
-import Average from "./Average";
+import InfoC from './InfoC';
 const App = () => {
-  return <Average />
+  return <InfoC />
 }
 
 export default App;
