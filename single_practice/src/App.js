@@ -25,9 +25,9 @@ class App extends Component {
   }
 }*/
 
-/* ====5.2.3 Hook 뒷정리하기 cleanup 함수 */
-import React, {useState } from 'react';
-import Info from './Info';
+/* ====5.2.3 Hook 뒷정리하기 cleanup 함수 
+// import React, {useState } from 'react';
+// import Info from './Info';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -41,6 +41,15 @@ const App = () => {
       {visible && <Info />}
     </>
   )
+}*/
+
+//==== 8.3 useReducer
+import React from 'react';
+import CounterFuncB from './CounterFunc';
+import InfoB from './InfoB';
+
+const App = () => {
+  return <InfoB />
 }
 
 export default App;
