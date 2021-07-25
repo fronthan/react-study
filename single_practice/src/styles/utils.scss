@@ -1,3 +1,6 @@
+@import '~include-media/dist/_include-media';
+@import '~open-color/open-color';//'~' 물결무늬는 자동으로 node-modulesd의 library 폴더로 가게 해준다. 
+
 $red:#fa5252;
 $orange: #fd7e14;
 $yellow: #fcc419;
