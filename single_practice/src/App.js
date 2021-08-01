@@ -48,12 +48,16 @@ const App = () => {
 import React from 'react';
 import CounterFuncB from './CounterFunc';
 import InfoB from './InfoB';
+import InfoC from './InfoC';
+*/
+/* ======= 9.3 styled-component 
+import StyledComponent from './StyledComponent';
 */
 
 import React from 'react';
-import InfoC from './InfoC';
+
 const App = () => {
-  return <InfoC />
+  // return <StyledComponent />
 }
 
 export default App;
