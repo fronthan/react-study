@@ -50,14 +50,49 @@ import CounterFuncB from './CounterFunc';
 import InfoB from './InfoB';
 import InfoC from './InfoC';
 */
+
+
+import React, { Component } from 'react';
+/*==== 9.1 css 규칙
+ import './App.css';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header>
+          <img src="{logo}" alt="logo" className="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+            Learn React
+          </a>
+        </header>
+      </div>
+    );
+  }
+}*/
+
+// import SassComponent from './SassComponent';
+// import CSSModule from './CSSModule';
+
 /* ======= 9.3 styled-component 
 import StyledComponent from './StyledComponent';
 */
 
 import React from 'react';
 
-const App = () => {
-  // return <StyledComponent />
+
+class App extends Component {
+  render() {
+
+    return(
+      <div>
+        <CSSModule />
+      </div>
+    );
+  }
 }
 
 export default App;
