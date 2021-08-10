@@ -36,13 +36,13 @@ function App() {
 
   const onInsert = useCallback(
     text=> {
-      const todo = {
+      const new_todo = {
         id:nextId.current,
         text,
         checked:false
       }
       // setTodos(todos => todos.concat(todo));
-      dispatch({type: 'INSERT', todo});
+      dispatch({type: 'INSERT', new_todo});
       nextId.current +=1;
     },
     []);

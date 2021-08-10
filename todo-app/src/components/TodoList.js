@@ -3,8 +3,10 @@ import { List } from 'react-virtualized';
 import TodoListItem from './TodoListItem';
 import './TodoList.scss';
 
-const TodoList = ({ todos, onRemove, onToggle }) => {
-  const rowRenderer = useCallback(({ index, key, style}) => {
+const TodoList = ({ todos, onRemove, onToggle }) => {//todos는 할일 배열
+
+  const rowRenderer = useCallback(({ index, key, style }) => {
+    //실제로 렌더링 되는 컴포넌트
     const todo = todos[index];
 
     return (
@@ -18,6 +20,7 @@ const TodoList = ({ todos, onRemove, onToggle }) => {
   }, [onRemove, onToggle, todos]);
 
   return (
+     //react-virtualized 는 렌더링 갯수 정해주는 컴포넌트, 스크롤 이벤트를 감지한다
     <List
      className="TodoList"
      width={512}
@@ -28,6 +31,7 @@ const TodoList = ({ todos, onRemove, onToggle }) => {
      list={todos}
      style={{outline:'none'}}
      />
+    
     //   {todos.map(todo => (
     //     <TodoListItem todo={todo} key={todo.id} onRemove={onRemove} onToggle={onToggle}/>
     //   ))}
