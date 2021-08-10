@@ -5,25 +5,28 @@ import {
 
 import './TodoListItem.scss';
 
-const TodoListItem = ({ todo, onRemove, onToggle }) => {
+const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
   const { id, text, checked } = todo;
 
   return (
-    <div className="TodoListItem">
-      <div className={checked ? 'checked' : ''} onClick={()=> onToggle(id)}>
-        {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
-        <div className="text">{text}</div>
-      </div>
-      <div className="remove" onClick={() => onRemove(id)}>
-        <MdRemoveCircleOutline />
+    <div className="TodoListItem-virtualized" style={style}>
+      <div className="TodoListItem">
+        <div className={checked ? 'checked' : ''} onClick={()=> onToggle(id)}>
+          {checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
+          <div className="text">{text}</div>
+        </div>
+        <div className="remove" onClick={() => onRemove(id)}>
+          <MdRemoveCircleOutline />
+        </div>
       </div>
     </div>
   );
 };
 
-TodoListItem.propTypes = {};
-
-export default React.memo(TodoListItem); //props 가 바뀌지 않으면 리렌더링되지 않도록 하는 것. React.memo
+export default React.memo(
+  TodoListItem,
+  (prevProps, nextProps) => prevProps.todo === nextProps.todo,
+  ); //props 가 바뀌지 않으면 리렌더링되지 않도록 하는 것. React.memo
 
 /**
  * 컴포넌트가 리렌더링이 될 때
