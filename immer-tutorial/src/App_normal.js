@@ -1,14 +1,6 @@
 import React, { useRef, useCallback, useState } from 'react';
-import produce from 'immer';
-
-/*
-immer 사용법, 불변성을 유지하기
-const nextState = produce(originalState, draft => {
-  draft.somewhere.value = 5;
-});
-
-* 첫번째 파라미터는 수정하고 싶은 상태, 두 번째 파라미터는 상태를 어떻게 업뎃할지 정의하는 함수
-*/
+//immer 를 사용하지 않은 일반적인 방법
+//12장 초반
 const App = () => {
   const nextId = useRef(1);
   const [form, setForm] = useState({ name : '', username: ''});
@@ -19,18 +11,11 @@ const App = () => {
 
   const onChange = useCallback( e => {//input 수정
     const { name, value } = e.target;
-    // setForm(
-    //   produce(form, draft => {
-    //     draft[name] = value
-    //   })
-    // );
-//** immer에서 제공하는 produce함수를 호출할 때 첫번째 파라미터가 함수 형태라면, 업데이트 함수를 반환한다. (위 코드와 아래 코드 비교)
-    setForm(
-      produce(draft => {
-        draft[name] = value
-      })
-    );
-  }, []);
+    setForm({
+      ...form,
+      [name]: [value]
+    });
+  }, [form]);
 
   const onSubmit = useCallback( e=> {//form 등록
     e.preventDefault();
@@ -41,37 +26,25 @@ const App = () => {
     };
 
     //array에 새 항목 등록
-    // setData(
-    //   produce(data, draft => {
-    //     draft.array.push(info);
-    //   })
-    // );
-    setData(
-      produce(draft => {
-        draft.array.push(info);
-      })
-    );
+    setData({
+      ...data,
+      array: data.array.concat(info)
+    });
 
     //form 초기화
     setForm({
       name:'', username:''
     });
     nextId.current += 1;
-  },[form.name, form.username]);
+  },[data, form.name, form.username]);
 
   const onRemove = useCallback(//항목 삭제하기
     id => {
-      // setData(
-      //   produce(data, draft => {
-      //     draft.array.splice(draft.array.findIndex(info=> info.id !== id), 1);
-      //   })
-      // );
-      setData(
-        produce(draft => {
-          draft.array.splice(draft.array.findIndex(info=> info.id !== id), 1);
-        })
-      );
-    }, []);
+      setData({
+        ...data,
+        array: data.array.filter(info=> info.id !== id)
+      });
+    }, [data]);
   
   return (
     <div className="App">
