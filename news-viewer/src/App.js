@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import NewsList from './components/NewsList';
+import Categories from './components/Categories';
 // import axios from 'axios';
 
 const App = () => {
@@ -15,6 +16,8 @@ const App = () => {
   //     console.log(e)
   //   }
   // };
+  const [category, setCategory] = useState('all');
+  const onSelect = useCallback(category => setCategory(category), []);
   
   return (
     // <div>
@@ -24,7 +27,10 @@ const App = () => {
     //   {data &&
     //   <textarea rows={7} value={JSON.stringify(data,null, 2)} readOnly={true} />}
     // </div>
-    <NewsList />
+    <>
+      <Categories category={category} onSelect={onSelect}/>
+      <NewsList category={category}/>
+    </>
   );
 };
 
