@@ -1,37 +1,15 @@
-import React, { useState, useCallback } from 'react';
-import NewsList from './components/NewsList';
-import Categories from './components/Categories';
-// import axios from 'axios';
+import React from 'react';
+import { Route } from 'react-router-dom';
+import NewsPage from './pages/NewsPage';
 
 const App = () => {
-  // const [data, setData] = useState(null);
+  /* 상태 관리는 BrowserRouter를 정의한 index.js에서 하므로 삭제 
+  // const [category, setCategory] = useState('all');
+  // const onSelect = useCallback(category => setCategory(category), []);
+  */
 
-  // const onClick = async () => {
-  //   try {// 
-  //     const response = await axios.get(
-  //       'https://newsapi.org/v2/top-headlines?country=kr&category=technology&apiKey=493c839ebcce4b6ea34c39823af14a80'
-  //       );
-  //       setData(response.data);
-  //   } catch (e) {
-  //     console.log(e)
-  //   }
-  // };
-  const [category, setCategory] = useState('all');
-  const onSelect = useCallback(category => setCategory(category), []);
-  
-  return (
-    // <div>
-    //   <div>
-    //     <button onClick={onClick}>불러오기</button>
-    //   </div>
-    //   {data &&
-    //   <textarea rows={7} value={JSON.stringify(data,null, 2)} readOnly={true} />}
-    // </div>
-    <>
-      <Categories category={category} onSelect={onSelect}/>
-      <NewsList category={category}/>
-    </>
-  );
+  return <Route path="/:category?" component={NewsPage} />;
+  //여기서 /:category? 의 물음표는 있을 수도 없을 수도 있는 값. 파라미터가 없다면 전체 카테고리로 간주
 };
 
 

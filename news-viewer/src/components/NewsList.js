@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
 import axios from 'axios';
+import usePromise from '../lib/usePromise';
 
 const NewsListBlock = styled.div`
   width:100%;
@@ -23,28 +24,12 @@ const NewsListBlock = styled.div`
 // };
 
 const NewsList = ({ category }) => {
-  const [articles, setArticles] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    //useEffect 내부에서 async/await를 사용하고 싶으면 내부에 함수를 만들어서 사용한다. 
-    const fetchData = async () => {
-      setLoading(true);
-
-      try{
-        const query = category === 'all' ? '' : `&category=${category}`;
-        const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=493c839ebcce4b6ea34c39823af14a80`,
-        );
-
-        setArticles(response.data.articles);
-      } catch (e) {
-        console.log(e);
-      }
-
-      setLoading(false);
-    };
-
-    fetchData();
+  // const [articles, setArticles] = useState(null);
+  // const [loading, setLoading] = useState(false);
+  const [loading, response, error] = usePromise(()=> {
+    const query = category === 'all' ? '' : `&category=${category}`;
+    return axios.get(`https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=493c839ebcce4b6ea34c39823af14a80`,
+    );
   }, [category]);
 
   if (loading) {
@@ -52,11 +37,15 @@ const NewsList = ({ category }) => {
   }
 
   //articles 값이 설정되지 않았을 때
-  if(!articles) {
+  if(!response) {
     return null;
   }
 
-  //articles 값이 유효할 때
+  if (error) {
+    return <NewsListBlock>에러 발생!</NewsListBlock>
+  }
+
+  //articles(response) 값이 유효할 때
   return (
     <NewsListBlock>
       {/* <NewsItem article={sampleArticle}/>

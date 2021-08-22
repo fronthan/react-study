@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 const categories = [
     {name: 'all', text:'전체보기'},
@@ -16,7 +17,7 @@ const CategoriesBlock = styled.div`
     overflow-x: auto;
 `;
 
-const Category = styled.div`
+const Category = styled(NavLink)`
     padding-bottom:.25rem;
     font-size: 1.125rem;
     cursor: pointer;
@@ -26,25 +27,38 @@ const Category = styled.div`
 
     &:hover {color:#495057}
 
-    ${props =>
+    &.active {
+        border-bottom:2px solid #22b8cf;
+        color:#22b8cf;
+        font-weight:600;
+        &:hover {color:#3bc9db;}
+    }
+    /* ${props =>
     props.active && css`
     border-bottom:2px solid #22b8cf;
     color:#22b8cf;
     font-weight:600;
     &:hover {color:#3bc9db;}
-    }`}
+    }`} */
 
     &+& {margin-left:1rem}
 `;
 
-const Categories = ({ onSelect, category }) => {
+const Categories = () => {
     return (
         <CategoriesBlock>
             {categories.map(c => (
                 <Category key={c.name}
-                    active={category === c.name}
-                    onClick={() => onSelect(c.name)}
-                >{c.text}</Category>
+                    activeClassName="active"
+                    exact={c.name === 'all'}
+                    to={c.name === 'all' ? '/' : `/${c.name}`}
+                >{c.text}
+            {/* NavLink 적용 이전 코드
+                <Category key={c.name}
+                active={category === c.name}
+                onClick={() => onSelect(c.name)}
+            >{c.text}</Category> */}
+                </Category>
             ))}            
         </CategoriesBlock>
 
