@@ -21,6 +21,7 @@ function usePromise(promiseCreator, deps) {
         };
 
         process();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, deps);
 
     return [loading, resolved, error];
