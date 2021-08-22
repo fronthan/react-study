@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
 import axios from 'axios';
@@ -46,6 +46,7 @@ const NewsList = ({ category }) => {
   }
 
   //articles(response) 값이 유효할 때
+  const { articles } = response.data;
   return (
     <NewsListBlock>
       {/* <NewsItem article={sampleArticle}/>
