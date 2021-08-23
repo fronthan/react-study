@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ColorBox from './components/ColorBox';
+import SelectColors from './components/SelectColors';
+import { ColorProvider } from './contexts/color';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    /* 기본적인 Provider 사용법 15.2.2
+      //  <ColorContext.Provider value={{ color:'red' }}>
+  //  <div>
+  //    <ColorBox />
+  //  </div>
+  //  </ColorContext.Provider>
+  */
+    <ColorProvider>
+      <div>
+        <SelectColors />
+        <ColorBox />
+      </div>
+    </ColorProvider>
   );
 }
 
