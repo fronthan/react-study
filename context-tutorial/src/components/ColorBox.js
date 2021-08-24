@@ -1,7 +1,11 @@
-import React from 'react';
-import { ColorConsumer } from '../contexts/color';
+import React, { useContext } from 'react';
+// import { ColorConsumer } from '../contexts/color'; //15.3 Consumer
+import ColorContext from '../contexts/color'; //15.4 useContext Hook 함수형 컴포넌트
 
 const ColorBox = () => {
+
+    const { state } = useContext(ColorContext);
+
     return (
         /* 15.2.2
         //기본적으로 context.consumer 로 값을 가져올 수 있다
@@ -16,8 +20,8 @@ const ColorBox = () => {
         //     )}
         // </ColorContext.Consumer>
         */
-       <ColorConsumer>
-           {   ({ state }) => (
+      /* <ColorConsumer> //15.3
+           {   ({ state }) => (*/
                //value => (
                <>
                <div style={{
@@ -28,8 +32,8 @@ const ColorBox = () => {
                    width:'32px', height:'32px', background:state.subcolor
                }}/>
                </>
-           )}
-       </ColorConsumer>
+       /*    )}
+    //    </ColorConsumer> */
     );
 }
 
