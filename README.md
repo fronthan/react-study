@@ -36,3 +36,5 @@
 <p>책 완독하며 따라하기</p>
 - #2021.04.12부터 single_practice
 - #2021.08.01부터 10장 todo List
+- # ? 
+- #2021.08.26부터 17장 react-redux-tutorial
