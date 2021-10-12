@@ -34,5 +34,11 @@
 
 ## 6. 책 리액트를 다루는 기술
 <p>책 완독하며 따라하기</p>
-- #2021.04.12부터 single_practice
-- #2021.08.01부터 10장 todo List
+- #2021.04.12부터 single_practice<br>
+- #2021.08.01부터 10장 todo List<br>
+- #2021.08.11부터 12장 immer-tutorial<br>
+- #2021.08.16부터 13장 router-tutorial<br>
+- #2021.08.18부터 14장 news-viewer<br>
+- #2021.08.22부터 15장 context-tutorial<br>
+- #2021.08.24부터 16장 vinala-redux<br>
+- #2021.08.25부터 17장 react-redux-tutorial<br>
