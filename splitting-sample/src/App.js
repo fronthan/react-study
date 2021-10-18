@@ -1,8 +1,12 @@
-import React, { useState, Suspense } from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-const SplitMe = React.lazy(()=> import('./SplitMe'));
+import loadable from '@loadable/component';
+const SplitMe = loadable(()=> import('./SplitMe'), {
+  fallback: <div>loading...</div>
+});
 
+/* loadable components 는 코드 스플리팅을 편하게 하도록 도와주는 서드파티 라이브러리이다.  */
 function App() {
   const [visible,setVisible] = useState(false);
 
@@ -10,14 +14,16 @@ function App() {
     setVisible(true);
   }
 
+  const onMouseOver = () => {
+    SplitMe.preload();
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} alt="logo" className="App-logo"/>
-        <p onClick={onClick}>Hello React!</p>
-        <Suspense fallback={<div>loading...</div>}>
-          {visible && <SplitMe />}
-        </Suspense>
+        <p onClick={onClick} onMouseOver={onMouseOver}>Hello React!</p>
+        {visible && <SplitMe />}
       </header>
     </div>
   );
