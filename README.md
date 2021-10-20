@@ -44,3 +44,4 @@
 - #2021.08.26부터 17장 react-redux-tutorial<br>
 - #2021.10.12부터 18장 learn-redux-middleware<br>
 - #2021.10.16부터 19장 splitting-sample<br>
+- #2021.10.19부터 ssr-recipe
