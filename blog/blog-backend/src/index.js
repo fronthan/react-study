@@ -1,31 +1,36 @@
 const Koa = require('koa');
+const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser'); //이 미들웨어는 post/put/patch 같은 메서드의 request body에 JSON 형식으로 데이터를 넣어주면, 이를 파싱해서 서버에서 사용할 수 있게 하고, router를 적용하는 코드의 윗부분에서 사용해야 한다. 
+
+const api = require('./api');
+
 const app = new Koa();
+const router = new Router();
 
-app.use(async (ctx, next) => {//ctx 는 context로, 웹요청과 응답에 관한 정보를 지니고 있다. 
-  //next는 다음 미들웨어를 호출하며, 주로 다음 미들웨어를 처리할 필요가 없는 라우트 미들웨어를 나중에 설정할 때 next를 생략해 미들웨어를 작성한다. 
-  console.log(ctx.url);
-  console.log(1);
+router.use('/api', api.routes()); //api 라우트 적용
 
-  if (ctx.query.authorized !== '1') {
-    ctx.status = 401; //unauthorized
-    return;
-  }
-  
-  /*next().then(()=> {//next함수는 Promise를 반환하기 때문에, 다음에 처리해야 할 미들웨어가 끝나야 완료된다. 
-    console.log('END');
-  });*/
-  await next();
-  console.log('END');
+
+/* 기본적인 라우트 적용 방법 ( 파라미터, 쿼리 )
+router.get('/', ctx => {
+  ctx.body = "홈";
+});
+router.get('/about/:name?', ctx => {
+  const { name } = ctx.params;
+
+  ctx.body = name ? `${name}의 소개` : '소개';
 });
 
-app.use((ctx, next) => {
-  console.log(2);
-  next();
-});
+router.get('/posts', ctx=> {
+  const { id } = ctx.query;
 
-app.use(ctx=> {
-  ctx.body = 'hello world7'
+  ctx.body = id ? `포스트 #${id}` : '포스트 아이디가 없습니다.';  
 });
+*/
+
+app.use(bodyParser());//라우터 적용 전에 bodyparser 적용
+
+//app 인스턴스에 라우터 적용
+app.use(router.routes()).use(router.allowedMethods());
 
 app.listen(4000, ()=> {
   console.log('Listening 4000')
