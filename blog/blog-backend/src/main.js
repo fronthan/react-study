@@ -5,10 +5,12 @@ import bodyParser from 'koa-bodyparser'; //이 미들웨어는 post/put/patch �
 import mongoose from 'mongoose';
 
 import api from './api';
+import createFakeData from './createFakeData';
 
 const { PORT, MONGO_URI } = process.env; //비구조화 할당을 통해 process.env 내부 값에 대한 레퍼런스 만들기
 
-mongoose.connect(MONGO_URI, {useNewUrlParser: true, useFindAndModify: false})
+
+mongoose.connect("mongodb://localhost:27017/blog", {useNewUrlParser: true})//window에서는 string으로 보내야 된다 21.11.08
 .then(()=> {
   console.log('Connected to MONGoDB');
 })
