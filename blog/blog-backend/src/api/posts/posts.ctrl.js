@@ -42,9 +42,22 @@ export const write = async ctx => {
 };
 
 export const list = async ctx => {
+  const page = parseInt(ctx.query.page || '1', 10);
+
+  if (page < 1) {
+    ctx.status = 400;
+    return;
+  }
+
   try {
-    const posts = await Post.find().sort({ _id: -1}).limit(10).exec(); //'-1'은 내림차순, '1'은 오름차순
-    ctx.body = posts;
+    const posts = await Post.find().sort({ _id: -1}).limit(10).skip((page-1)* 10).lean().exec(); //'-1'은 내림차순, '1'은 오름차순
+    const postCount = await Post.countDocuments().exec();//lean() 함수는 처음부터 json 형태로 데이터를 가져온다
+    ctx.set('Last-Page', Math.ceil(postCount/10));
+    ctx.body = posts//.map(post => post.toJSON())
+    .map(post => ({
+      ...post,
+      body: post.body.length < 200 ? post.body : `${post.body.slice(0, 200)}...`,
+    }));//글자수가 200자 이상이면 ...을 붙인다. 
   } catch(e) {
     ctx.throw(500, e);
   }

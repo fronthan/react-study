@@ -9,9 +9,9 @@ import createFakeData from './createFakeData';
 
 const { PORT, MONGO_URI } = process.env; //비구조화 할당을 통해 process.env 내부 값에 대한 레퍼런스 만들기
 
-
 mongoose.connect("mongodb://localhost:27017/blog", {useNewUrlParser: true})//window에서는 string으로 보내야 된다 21.11.08
 .then(()=> {
+  //createFakeData();
   console.log('Connected to MONGoDB');
 })
 .catch(e=> {
