@@ -5,7 +5,8 @@ import bodyParser from 'koa-bodyparser'; //이 미들웨어는 post/put/patch �
 import mongoose from 'mongoose';
 
 import api from './api';
-import createFakeData from './createFakeData';
+import jwtMiddleware from './lib/jwtMiddleware';
+//import createFakeData from './createFakeData';
 
 const { PORT, MONGO_URI } = process.env; //비구조화 할당을 통해 process.env 내부 값에 대한 레퍼런스 만들기
 
@@ -24,6 +25,7 @@ const router = new Router();
 router.use('/api', api.routes()); //api 라우트 적용
 
 app.use(bodyParser());//라우터 적용 전에 bodyparser 적용
+app.use(jwtMiddleware);
 
 //app 인스턴스에 라우터 적용
 app.use(router.routes()).use(router.allowedMethods());
