@@ -2,13 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeField, initializeForm, register } from '../../modules/auth';
 import AuthForm from '../../components/auth/AuthForm';
+import { check } from '../../modules/user';
+import { withRouter } from 'react-router-dom';
 
-const RegisterForm = ({ history}) => {
+const RegisterForm = ({ history }) => {
   const dispatch = useDispatch();
-  const { form, auth, authError } = useSelector(({ auth }) => ({
+  const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
     form: auth.register,
     auth: auth.auth,
-    authError: auth.authError
+    authError: auth.authError,
+    user: user.user
   }));
 
   //인풋 변경 핸들러
@@ -31,7 +34,7 @@ const RegisterForm = ({ history}) => {
       //TODO: 오류처리
       return;
     }
-    dispatch(register({ username, password}));
+    dispatch(register({ username, password }));
   };
 
   useEffect(()=> {//컴포넌트가 처음 렌더링될 때 form을 초기화한다
@@ -48,9 +51,17 @@ const RegisterForm = ({ history}) => {
     if(auth) {
       console.log('회원가입 성공');
       console.log(auth);
+      dispatch(check());
     }
-  }, [auth, authError]);
+  }, [auth, authError, dispatch]);
   
+  useEffect(()=> {
+    if(user) {
+      history.push('/');
+      console.log(user)
+    }
+  }, [history, user]);
+
   return (
     <AuthForm type="register"
       form={form}
@@ -60,4 +71,4 @@ const RegisterForm = ({ history}) => {
   )
 }
 
-export default RegisterForm;
+export default withRouter(RegisterForm);
