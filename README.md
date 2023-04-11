@@ -47,6 +47,10 @@
 - #2021.10.19부터 20장 ssr-recipe (skip)<br>
 - #2021.10.31부터 21장 백엔드 프로그래밍:Node.js의 Koa 프레임워크 blog/blog-backend
 
-## 7. 양재동 코드랩, NextJS 2019
-- #2022.11.27 시작<br>
-- first-next-app
+## 7. Next.js boiler-plate
+<p>스터디 모임</p>
+- 2022.05.22
+
+## 8. 노마드코더의 Next.js 시작하기
+- #2023.04.08부터<br>
+- nextjs-intro
