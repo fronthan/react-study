@@ -50,3 +50,7 @@
 ## 7. Next.js boiler-plate
 <p>스터디 모임</p>
 - 2022.05.22
+
+## 8. 노마드코더의 Next.js 시작하기
+- #2023.04.08부터<br>
+- nextjs-intro
