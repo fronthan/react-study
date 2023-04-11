@@ -46,3 +46,7 @@
 - #2021.10.16부터 19장 splitting-sample<br>
 - #2021.10.19부터 20장 ssr-recipe (skip)<br>
 - #2021.10.31부터 21장 백엔드 프로그래밍:Node.js의 Koa 프레임워크 blog/blog-backend
+
+## 7. 양재동 코드랩, NextJS 2019
+- #2022.11.27 시작<br>
+- first-next-app
