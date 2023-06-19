@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* @font-face {
+  font-family: bmwkr;
+  src: local('BMWTypeNext-Bold'), local('/fonts/BMWTypeNext-Bold'),
+      url('fonts/BMWTypeNext-Bold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: bmwkr;
+  src: local('BMWTypeNext-Regular'), local('/fonts/BMWTypeNext-Regular'),
+      url('fonts/BMWTypeNext-Regular.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: bmwkr;
+  src: local('BMWTypeNext-Light'), local('/fonts/BMWTypeNext-Light'),
+      url('fonts/BMWTypeNext-Light.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: bmwkr;
+  src: local('BMWTypeNext-Thin'), local('/fonts/BMWTypeNext-Thin'),
+      url('fonts/BMWTypeNext-Thin.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+} */
+
+* {box-sizing: border-box;}
+
+html {font-size: 62.5%;}
+body {
+  font-family: bmwkr, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
